@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,32 +12,35 @@ export class NavComponent implements OnInit {
   username: any;
   password: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private alertService: AlertifyService
+  ) {}
 
   ngOnInit() {}
 
   login() {
+    // Convert to a single object later one : (PENDING FIX)
     let model = {
       username: this.username,
       password: this.password
     };
     this.authService.login(model).subscribe(
       next => {
-        console.log('Logged in');
+        this.alertService.success('Logged in successfully!');
       },
       error => {
-        console.log(error);
+        this.alertService.error(error);
       }
     );
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
 
   logout() {
     localStorage.removeItem('token');
-    console.log('Logged out!');
+    this.alertService.message('Logged out');
   }
 }
