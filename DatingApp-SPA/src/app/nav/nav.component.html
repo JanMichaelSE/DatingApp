@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']">Dating App</a>
-
     <!-- Options when LoggedIn to see Matches / Lists / Messages -->
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
       <li class="nav-item " routerLinkActive="active">
