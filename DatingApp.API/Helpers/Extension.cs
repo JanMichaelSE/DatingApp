@@ -1,10 +1,12 @@
 using System;
 using Microsoft.AspNetCore.Http;
 
+
 namespace DatingApp.API.Helpers
 {
     public static class Extension
     {
+        // Since our server and client are separete we use this so the client trusts our server 
         public static void AddApplicationError(this HttpResponse response, string message)
         {
             response.Headers.Add("Application-Error", message);

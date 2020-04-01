@@ -12,6 +12,7 @@ export class NavComponent implements OnInit {
   // Property
   username: any;
   password: any;
+  photoUrl: string;
 
   constructor(
     public authService: AuthService,
@@ -19,7 +20,11 @@ export class NavComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.currentPhotoUrl.subscribe(
+      photoUrl => (this.photoUrl = photoUrl)
+    );
+  }
 
   login() {
     // Convert to a single object later one : (PENDING FIX)
@@ -46,6 +51,9 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.authService.decodedToken = null;
+    this.authService.currentUser = null;
     this.alertService.message('Logged out');
     this.router.navigate(['/home']);
   }

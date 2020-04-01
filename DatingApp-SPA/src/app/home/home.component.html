@@ -1,9 +1,12 @@
 <div class="container mt-5">
   <div *ngIf="!registerMode" style="text-align: center">
-    <h1>Find your match</h1>
+    <!-- Home heading -->
+    <h1>Stay In Touch</h1>
+    <!-- Home description -->
     <p class="lead">
-      Come on in to view your matches... All you need to do is sign up!
+      Stay Home and connect with the world... All you need to do is sign up!
     </p>
+    <!-- Register option -->
     <div class="text-center">
       <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">
         Register
@@ -11,7 +14,7 @@
       <button class="btn btn-info btn-lg">Learn more</button>
     </div>
   </div>
-
+  <!-- Cancel Option -->
   <div *ngIf="registerMode" class="container">
     <div class="row justify-content-center">
       <div class="col-4">

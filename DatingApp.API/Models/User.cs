@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+// THIS IS HOW THE USER TABLE IS SET UP
 namespace DatingApp.API.Models
 {
     public class User

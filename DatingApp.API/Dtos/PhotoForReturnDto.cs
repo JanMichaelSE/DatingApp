@@ -1,9 +1,8 @@
 using System;
 
-// THIS IS HOW THE PHOTOS TABEL IS SET UP
-namespace DatingApp.API.Models
+namespace DatingApp.API.Dtos
 {
-    public class Photo
+    public class PhotoForReturnDto
     {
         public int Id { get; set; }
         public string Url { get; set; }
@@ -11,9 +10,5 @@ namespace DatingApp.API.Models
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; }
         public string PublicId { get; set; }
-
-        // This is how make sure if a user is deleted then the photos will also be deleted
-        public User User { get; set; }
-        public int UserId { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { Error.interceptorService } from './error.interceptor.service';
+import { Error, interceptorService } from './error.interceptor.service';
 
 describe('Service: Error.interceptor', () => {
   beforeEach(() => {
@@ -10,7 +10,10 @@ describe('Service: Error.interceptor', () => {
     });
   });
 
-  it('should ...', inject([Error.interceptorService], (service: Error.interceptorService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should ...', inject(
+    [Error.interceptorService],
+    (service: Error.interceptorService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
 });
