@@ -3,7 +3,10 @@
   <div class="card-img-wrapper">
     <img
       class="card-img-top"
-      src="{{ user.photoUrl }}"
+      src="{{
+        user.photoUrl ||
+          'https://mp4-a.udemycdn.com/2017-12-09_09-21-11-bbac3af559c4cddd56eb13b8c5da1e65/original.png?TEwWCuhFcpO4EZ-8OAX1IL61mInParE4KB4Hrm3YDirSaOAMyJv55xgLhzZqD4yRIN1Vgv1EKtPVfilxj6xwH6rRU6K7tqdlksoskSUIKWneHP3oSyBSBpkdUvUYFgnTVmt_5QOxO4559JTu3OnV1yHkzoRgv2BkwZvx4sXk22U'
+      }}"
       alt="{{ user.knownAs }}"
     />
 
@@ -15,7 +18,9 @@
         </button>
       </li>
       <li class="list-inline-item">
-        <button class="btn btn-primary"><i class="fa fa-heart"></i></button>
+        <button class="btn btn-primary" (click)="sendLike(user.id)">
+          <i class="fa fa-heart"></i>
+        </button>
       </li>
       <li class="list-inline-item">
         <button class="btn btn-primary"><i class="fa fa-envelope"></i></button>

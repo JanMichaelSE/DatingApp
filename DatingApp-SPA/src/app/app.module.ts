@@ -14,6 +14,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -36,6 +37,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-chanegs.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ListsResolver } from './_resolvers/list.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -70,7 +73,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     TabsModule.forRoot(),
+    ButtonsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
     FileUploadModule,
@@ -92,7 +97,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberListResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig },
     MemberEditResolver,
-    PreventUnsavedChanges
+    PreventUnsavedChanges,
+    ListsResolver
   ],
   bootstrap: [AppComponent]
 })
