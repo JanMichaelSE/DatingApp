@@ -10,10 +10,7 @@
       <div class="card">
         <img
           class="card-img-top img-thumbnail"
-          src="{{
-            user.photoUrl ||
-              'https://mp4-a.udemycdn.com/2017-12-09_09-21-11-bbac3af559c4cddd56eb13b8c5da1e65/original.png?TEwWCuhFcpO4EZ-8OAX1IL61mInParE4KB4Hrm3YDirSaOAMyJv55xgLhzZqD4yRIN1Vgv1EKtPVfilxj6xwH6rRU6K7tqdlksoskSUIKWneHP3oSyBSBpkdUvUYFgnTVmt_5QOxO4559JTu3OnV1yHkzoRgv2BkwZvx4sXk22U'
-          }}"
+          src="{{ user.photoUrl || '../../../assets/user.png' }}"
           alt="{{ user.knownAs }}"
         />
         <div class="card-body">
@@ -40,7 +37,9 @@
             <button class="btn btn-primary w-100" (click)="sendLike(user.id)">
               Like
             </button>
-            <button class="btn btn-success w-100">Message</button>
+            <button class="btn btn-success w-100" (click)="selectTab(3)">
+              Message
+            </button>
           </div>
         </div>
       </div>
@@ -48,7 +47,7 @@
     <!-- Our Tab section on the right of the member detail page -->
     <div class="col-sm-8">
       <div class="tab-panel">
-        <tabset class="member-tabset">
+        <tabset class="member-tabset" #memberTabs>
           <tab heading="About {{ user.knownAs }}">
             <h4 *ngIf="user.introduction != null">Description</h4>
             <p>{{ user.introduction }}</p>
@@ -67,7 +66,7 @@
             ></ngx-gallery>
           </tab>
           <tab heading="Messages">
-            <p>messages will go here</p>
+            <app-member-messages [recipientId]="user.id"></app-member-messages>
           </tab>
         </tabset>
       </div>

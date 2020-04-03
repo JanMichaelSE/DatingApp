@@ -3,27 +3,37 @@
   <div class="card-img-wrapper">
     <img
       class="card-img-top"
-      src="{{
-        user.photoUrl ||
-          'https://mp4-a.udemycdn.com/2017-12-09_09-21-11-bbac3af559c4cddd56eb13b8c5da1e65/original.png?TEwWCuhFcpO4EZ-8OAX1IL61mInParE4KB4Hrm3YDirSaOAMyJv55xgLhzZqD4yRIN1Vgv1EKtPVfilxj6xwH6rRU6K7tqdlksoskSUIKWneHP3oSyBSBpkdUvUYFgnTVmt_5QOxO4559JTu3OnV1yHkzoRgv2BkwZvx4sXk22U'
-      }}"
+      src="{{ user.photoUrl || '../../../assets/user.png' }}"
       alt="{{ user.knownAs }}"
     />
 
     <!-- Icons on photo to View User / Like User / Message User  -->
     <ul class="list-inline member-icons animate text-center">
+      <!-- View a User -->
       <li class="list-inline-item">
-        <button class="btn btn-primary" [routerLink]="['/members/', user.id]">
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/members/', user.id]"
+          a-ro
+        >
           <i class="fa fa-user"></i>
         </button>
       </li>
+      <!-- Like a User -->
       <li class="list-inline-item">
         <button class="btn btn-primary" (click)="sendLike(user.id)">
           <i class="fa fa-heart"></i>
         </button>
       </li>
+      <!-- Message a User -->
       <li class="list-inline-item">
-        <button class="btn btn-primary"><i class="fa fa-envelope"></i></button>
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/members/', user.id]"
+          [queryParams]="{ tab: 3 }"
+        >
+          <i class="fa fa-envelope"></i>
+        </button>
       </li>
     </ul>
   </div>
